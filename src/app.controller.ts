@@ -11,6 +11,6 @@ export class AppController {
   @Get()
   @ApiOkResponse()
   getHello(): string {
-    return this.appService.getHello(); 
+    return this.appService.getHello();
   }
 }
