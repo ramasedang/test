@@ -1,0 +1,44 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x", "linux-musl", "linux-musl-openssl-3.0.x"]
+}
+
+generator dbml {
+  provider = "prisma-dbml-generator"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  MAHASISWA
+  SMA
+  USER
+}
+
+model User {
+  id        String    @id @default(uuid())
+  nama      String
+  email     String    @unique
+  password  String
+  role      Role      @default(USER)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+
+model Provinsi {
+  id        Int   @id 
+  nama      String
+  kabupatens Kabupaten[]
+}
+
+model Kabupaten {
+  id         Int    @id
+  nama       String
+  provinsiId Int   
+  provinsi   Provinsi? @relation(fields: [provinsiId], references: [id])
+}
