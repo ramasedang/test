@@ -1,7 +1,5 @@
 import { PrismaClient } from '@prisma/client';
 import * as fs from 'fs';
-import * as bcrypt from 'bcrypt';
-
 const prisma = new PrismaClient();
 const start = Date.now();
 
