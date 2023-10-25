@@ -2,3 +2,7 @@ coverage
 node_modules
 dist
 **.md
+app.controller.ts
+app.module.ts
+app.service.ts
+prisma.service.ts
